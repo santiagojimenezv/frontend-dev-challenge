@@ -92,6 +92,18 @@ export default function CampaignPage() {
       case 'integrations':
         setCurrentStep('review');
         break;
+      case 'email-setup':
+        setCurrentStep('integrations');
+        break;
+      case 'email-review':
+        setCurrentStep('email-setup');
+        break;
+      case 'email-loading':
+        setCurrentStep('email-review');
+        break;
+      case 'email-final':
+        setCurrentStep('email-loading');
+        break;
     }
   };
 

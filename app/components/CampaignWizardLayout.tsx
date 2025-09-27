@@ -13,7 +13,7 @@ export default function CampaignWizardLayout({ children, currentStep, totalSteps
   return (
     <div className="min-h-screen bg-white flex">
       {/* Left Sidebar */}
-      <div className="w-16 bg-gray-800 flex flex-col items-center py-6">
+      <div className="w-16 bg-white border-r border-gray-200 flex flex-col items-center py-6">
         {/* Plus Icon */}
         <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center mb-8">
           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,17 +23,17 @@ export default function CampaignWizardLayout({ children, currentStep, totalSteps
 
         {/* Navigation Icons */}
         <div className="flex flex-col space-y-6 mb-8">
-          <div className="w-6 h-6 text-white">
+          <div className="w-6 h-6 text-gray-600">
             <svg fill="currentColor" viewBox="0 0 24 24">
               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
           </div>
-          <div className="w-6 h-6 text-white">
+          <div className="w-6 h-6 text-gray-600">
             <svg fill="currentColor" viewBox="0 0 24 24">
               <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
             </svg>
           </div>
-          <div className="w-6 h-6 text-white">
+          <div className="w-6 h-6 text-gray-600">
             <svg fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
@@ -65,8 +65,10 @@ export default function CampaignWizardLayout({ children, currentStep, totalSteps
             <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
             
             {/* Campaign Card */}
-            <div className="flex-1">
-              {children}
+            <div className="flex-1 flex justify-center">
+              <div className="w-full max-w-4xl">
+                {children}
+              </div>
             </div>
           </div>
         </div>

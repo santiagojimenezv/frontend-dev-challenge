@@ -53,4 +53,5 @@ body {
   border-radius: calc(0.5rem - 2px);
   padding: 2rem;
   min-height: 400px;
+  width: 100%;
 }
