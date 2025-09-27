@@ -13,8 +13,9 @@ import EmailSetup from '../components/EmailSetup';
 import EmailReview from '../components/EmailReview';
 import EmailLoading from '../components/EmailLoading';
 import EmailFinal from '../components/EmailFinal';
+import FileUpload from '../components/FileUpload';
 
-type Step = 'type-selection' | 'other-goal' | 'information' | 'existing-products' | 'loading' | 'review' | 'integrations' | 'email-setup' | 'email-review' | 'email-loading' | 'email-final';
+type Step = 'type-selection' | 'other-goal' | 'information' | 'existing-products' | 'file-upload' | 'loading' | 'review' | 'integrations' | 'email-setup' | 'email-review' | 'email-loading' | 'email-final';
 
 export default function CampaignPage() {
   const [currentStep, setCurrentStep] = useState<Step>('type-selection');
@@ -30,6 +31,8 @@ export default function CampaignPage() {
       case 'information':
         return 2;
       case 'existing-products':
+        return 2;
+      case 'file-upload':
         return 2;
       case 'loading':
         return 2;
@@ -83,8 +86,11 @@ export default function CampaignPage() {
       case 'existing-products':
         setCurrentStep('information');
         break;
+      case 'file-upload':
+        setCurrentStep('information');
+        break;
       case 'loading':
-        setCurrentStep('existing-products');
+        setCurrentStep('file-upload');
         break;
       case 'review':
         setCurrentStep('information');
@@ -113,6 +119,9 @@ export default function CampaignPage() {
         setCurrentStep('loading');
         break;
       case 'existing-products':
+        setCurrentStep('loading');
+        break;
+      case 'file-upload':
         setCurrentStep('loading');
         break;
       case 'review':
@@ -153,6 +162,10 @@ export default function CampaignPage() {
     setCurrentStep('email-final');
   };
 
+  const handleFileUpload = () => {
+    setCurrentStep('file-upload');
+  };
+
   const renderCurrentStep = () => {
     switch (currentStep) {
       case 'type-selection':
@@ -171,6 +184,7 @@ export default function CampaignPage() {
             onBack={handleBack}
             onExistingProducts={handleExistingProducts}
             onNewProduct={handleNewProduct}
+            onFileUpload={handleFileUpload}
           />
         );
       case 'existing-products':
@@ -179,6 +193,13 @@ export default function CampaignPage() {
             onNext={handleNext}
             onBack={handleBack}
             onNewProduct={handleNewProduct}
+          />
+        );
+      case 'file-upload':
+        return (
+          <FileUpload
+            onNext={handleNext}
+            onBack={handleBack}
           />
         );
       case 'loading':

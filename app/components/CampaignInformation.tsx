@@ -7,9 +7,10 @@ interface CampaignInformationProps {
   onBack: () => void;
   onExistingProducts: () => void;
   onNewProduct: () => void;
+  onFileUpload: () => void;
 }
 
-export default function CampaignInformation({ onNext, onBack, onExistingProducts, onNewProduct }: CampaignInformationProps) {
+export default function CampaignInformation({ onNext, onBack, onExistingProducts, onNewProduct, onFileUpload }: CampaignInformationProps) {
   const [activeTab, setActiveTab] = useState<'new' | 'existing'>('new');
   const [productUrl, setProductUrl] = useState('');
   const [dragOver, setDragOver] = useState(false);
@@ -109,9 +110,12 @@ export default function CampaignInformation({ onNext, onBack, onExistingProducts
                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
               </svg>
               <p className="text-lg font-medium text-gray-900 mb-2">Drop in your product/campaign info</p>
-              <button className="text-purple-600 hover:text-purple-700 font-medium">
-                Click to upload
-              </button>
+                    <button 
+                      onClick={onFileUpload}
+                      className="text-purple-600 hover:text-purple-700 font-medium"
+                    >
+                      Click to upload
+                    </button>
               <p className="text-sm text-gray-500 mt-2">PDF/CSV</p>
             </div>
             <input
@@ -131,12 +135,12 @@ export default function CampaignInformation({ onNext, onBack, onExistingProducts
           >
             Back
           </button>
-          <button
-            onClick={onNext}
-            className="px-6 py-3 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700"
-          >
-            Scan
-          </button>
+              <button
+                disabled
+                className="px-6 py-3 bg-gray-300 text-gray-500 rounded-lg font-medium cursor-not-allowed"
+              >
+                Scan
+              </button>
         </div>
       </div>
     </div>
