@@ -24,3 +24,33 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom gradient border for cards */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 0.5rem;
+  padding: 2px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(to bottom, #8b5cf6, #f97316);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+.gradient-border > * {
+  position: relative;
+  z-index: 1;
+  background: white;
+  border-radius: calc(0.5rem - 2px);
+  padding: 2rem;
+  min-height: 400px;
+}
